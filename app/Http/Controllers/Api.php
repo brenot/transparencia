@@ -20,22 +20,35 @@ class Api extends Controller
 
     public function categoria($id = null)
     {
-        return $this->find($id, AlerjCategoria::class, ['informacoes.categoria']);
+        return $this->find($id, AlerjCategoria::class, [
+            'informacoes.categoria'
+        ]);
     }
 
     private function findProtocolo($year, $number)
     {
-        return AlerjProtocolo::with('arquivos')->where('ano', $year)->where('numero', $number)->first();
+        return AlerjProtocolo::with('arquivos')
+            ->where('ano', $year)
+            ->where('numero', $number)
+            ->first();
     }
 
     public function informacao($id = null)
     {
-        return $this->find($id, AlerjInformacao::class, ['arquivos', 'categoria']);
+        return $this->find($id, AlerjInformacao::class, [
+            'arquivos',
+            'categoria'
+        ]);
     }
 
     public function informacaoArquivos($id)
     {
-        $data = $this->find($id, AlerjInformacao::class, 'arquivos', false)->first();
+        $data = $this->find(
+            $id,
+            AlerjInformacao::class,
+            'arquivos',
+            false
+        )->first();
 
         return $this->response($data->arquivos);
     }
@@ -47,12 +60,25 @@ class Api extends Controller
 
     public function conteudo($id)
     {
-        return $this->find($id, AlerjConteudo::class, ['arquivos'], true, 'protocolo');
+        return $this->find(
+            $id,
+            AlerjConteudo::class,
+            ['arquivos'],
+            true,
+            'protocolo'
+        );
     }
 
     public function conteudoArquivos($id)
     {
-        if ($data = $this->find($id, AlerjConteudo::class, 'arquivos', false)->first()) {
+        if (
+            $data = $this->find(
+                $id,
+                AlerjConteudo::class,
+                'arquivos',
+                false
+            )->first()
+        ) {
             return $this->response($data->arquivos);
         }
 
@@ -64,9 +90,14 @@ class Api extends Controller
         return $this->findProtocolo($year, $number);
     }
 
-    public function find($id, $class, $relations = null, $returnResponse = true, $keyName = null)
-    {
-        $object = new $class;
+    public function find(
+        $id,
+        $class,
+        $relations = null,
+        $returnResponse = true,
+        $keyName = null
+    ) {
+        $object = new $class();
 
         $query = $object->newQuery();
 
@@ -82,19 +113,12 @@ class Api extends Controller
 
         $result = $query->get();
 
-        if ($returnResponse) {
-            return $this->response($result);
-        }
-
         return $result;
     }
 
     public function response($data)
     {
-        return response()
-                ->json(
-                    array_utf8_encode($data->toArray())
-                );
+        return response()->json(array_utf8_encode($data->toArray()));
     }
 }
 
