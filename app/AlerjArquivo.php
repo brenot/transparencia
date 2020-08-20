@@ -2,8 +2,12 @@
 
 namespace App;
 
+use App\Traits\Excludable;
+
 class AlerjArquivo extends Alerj
 {
+    use Excludable;
+
     protected $table = 'tb_arquivo';
 
     protected $primaryKey = 'idArquivo';
@@ -12,9 +16,6 @@ class AlerjArquivo extends Alerj
 
     public function getUrlAttribute()
     {
-        return $this->makeUrl(
-            config('app.webservice.urls.file'),
-            $this->id
-        );
+        return $this->makeUrl(config('app.webservice.urls.file'), $this->id);
     }
 }

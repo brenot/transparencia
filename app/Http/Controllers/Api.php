@@ -43,14 +43,16 @@ class Api extends Controller
 
     public function informacaoArquivos($id)
     {
-        $data = $this->find(
-            $id,
-            AlerjInformacao::class,
-            'arquivos',
-            false
-        )->first();
-
-        return $this->response($data->arquivos);
+        return $this->response(
+            AlerjInformacao::where('idInformacao', $id)
+                ->with([
+                    'arquivos' => function ($q) {
+                        $q->exclude('blob');
+                    }
+                ])
+                ->get()
+                ->first()->arquivos
+        );
     }
 
     public function arquivo($id = null)
