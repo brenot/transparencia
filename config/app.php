@@ -57,6 +57,8 @@ return [
 
     'url' => env('APP_URL', 'http://localhost'),
 
+    'recaptcha' =>env('RECAPTCHA_API_KEY',null),
+
     /*
     |--------------------------------------------------------------------------
     | Application Timezone
