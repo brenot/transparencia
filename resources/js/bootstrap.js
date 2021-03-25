@@ -8,8 +8,10 @@ window._ = require('lodash')
 
 window.axios = require('axios')
 
-//Laravel 5.3
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
+
+//Laravel 5.3
+//window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -25,20 +27,18 @@ window.$ = window.jQuery = require('jquery')
  * and simple, leaving you to focus on building your next great project.
  */
 
-window.Vue = require('vue')
-require('vue-resource')
+import Vue from 'vue'
+Vue.component('example', require('./components/Example.vue'))
 
-/**
- * We'll register a HTTP interceptor to attach the "CSRF" header to each of
- * the outgoing requests issued by this application. The CSRF middleware
- * included with Laravel will automatically verify the header's value.
- */
 
-Vue.http.interceptors.push((request, next) => {
-    request.headers.set('X-CSRF-TOKEN', Laravel.csrfToken)
+const app = new Vue({
+    el: '#app',
 
-    next()
+    data: {
+        name: 'Transparência',
+    },
 })
+
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
