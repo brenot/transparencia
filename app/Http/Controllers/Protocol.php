@@ -6,7 +6,8 @@ use Throwable;
 use Exception;
 use App\Support\Encodable;
 use Illuminate\Http\Request;
-use App\Protocol as ProtocolModel;
+use App\Models\Protocol as ProtocolModel;
+use Illuminate\Support\Str;
 
 class Protocol extends Controller
 {
@@ -22,7 +23,10 @@ class Protocol extends Controller
      */
     private function redirectWrongProtocol()
     {
-        return redirect()->back()->withInput()->withErrors('Este número de protocolo não existe.');
+        return redirect()
+            ->back()
+            ->withInput()
+            ->withErrors('Este número de protocolo não existe.');
     }
 
     /**
@@ -37,14 +41,20 @@ class Protocol extends Controller
             return [null, 'Por favor digite um número de protocolo.'];
         }
 
-        $protocol = preg_replace("/[^0-9\/.]/", "", $protocol);
+        $protocol = preg_replace('/[^0-9\/.]/', '', $protocol);
 
         if (empty($protocol)) {
-            return [null, 'Número de protocolo inválido, por favor digite o número, seguido de uma barra ( / ) e do ano.'];
+            return [
+                null,
+                'Número de protocolo inválido, por favor digite o número, seguido de uma barra ( / ) e do ano.',
+            ];
         }
 
-        if (! str_contains($protocol, '/')) {
-            return [null, 'Número de protocolo incorreto, por favor digite o número, seguido de uma barra (/) e do ano.'];
+        if (!Str::contains($protocol, '/')) {
+            return [
+                null,
+                'Número de protocolo incorreto, por favor digite o número, seguido de uma barra (/) e do ano.',
+            ];
         }
 
         return [$protocol, ''];
@@ -55,12 +65,15 @@ class Protocol extends Controller
         list($number, $message) = $this->sanitizeProtocolNumber($request);
 
         if (is_null($number)) {
-            return redirect()->back()->withInput()->withErrors($message);
+            return redirect()
+                ->back()
+                ->withInput()
+                ->withErrors($message);
         }
 
         try {
-            if (! $result = $protocol->findByProtocol($number)) {
-                if (! $result = $protocol->findByGeneralProtocol($number)) {
+            if (!($result = $protocol->findByProtocol($number))) {
+                if (!($result = $protocol->findByGeneralProtocol($number))) {
                     return $this->redirectWrongProtocol();
                 }
             }

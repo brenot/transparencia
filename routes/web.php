@@ -1,20 +1,24 @@
 <?php
 
-Route::get('/', ['as' => 'home', 'uses' => 'Home@index']);
+use App\Http\Controllers\Cache as CacheController;
+use App\Http\Controllers\Home as HomeController;
+use App\Http\Controllers\Protocol as ProtocolController;
 
-Route::get('/section/{id}', ['as' => 'section', 'uses' => 'Home@data']);
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('/section/report/{id}', ['as' => 'report', 'uses' => 'Home@item']);
+Route::get('/section/{id}', [HomeController::class, 'data'])->name('section');
+Route::get('/section/report/{id}', [HomeController::class, 'item'])->name('report');
 
-Route::get('/cache/clear/{key?}', ['as' => 'cache.clear', 'uses' => 'Cache@clear']);
+Route::get('/cache/clear/{key?}', [CacheController::class, 'clear'])->name('cache.clear');
 
-Route::get('/protocolo', ['as' => 'protocol', 'uses' => 'Protocol@index']);
-Route::post('/protocolo', ['as' => 'protocol.show', 'uses' => 'Protocol@show']);
+Route::get('/protocolo', [ProtocolController::class, 'index'])->name('protocol');
+Route::post('/protocolo', [ProtocolController::class, 'show'])->name('protocol.show');
 
-Route::get('/categoria', function () {
-
-    $data = DB::connection('alerj')->table('tb_informacao')->where('idInformacao', 71)->get();
-
-    dd($data);
-
-});
+//Route::get('/categoria', function () {
+//    $data = DB::connection('alerj')
+//        ->table('tb_informacao')
+//        ->where('idInformacao', 71)
+//        ->get();
+//
+//    dd($data);
+//});

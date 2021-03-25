@@ -2,12 +2,14 @@
 
 namespace App\Support;
 
+use Illuminate\Support\Str;
+
 trait Encodable
 {
     public function encode($data)
     {
-        if (! is_numeric($data)) {
-            return '@'.base64_encode($data);
+        if (!is_numeric($data)) {
+            return '@' . base64_encode($data);
         }
 
         return $data;
@@ -24,7 +26,7 @@ trait Encodable
 
     public function isEncoded($data)
     {
-        if (! starts_with($data, '@')) {
+        if (!Str::startsWith($data, '@')) {
             return false;
         }
 

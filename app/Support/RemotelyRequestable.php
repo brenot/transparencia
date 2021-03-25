@@ -16,7 +16,8 @@ trait RemotelyRequestable
         return $this->fetchAndCache($data);
     }
 
-    public function getGuzzleXmlRequester(DataRequest $data) {
+    public function getGuzzleXmlRequester(DataRequest $data)
+    {
         return function () use ($data) {
             $client = new Guzzle();
 
@@ -25,7 +26,6 @@ trait RemotelyRequestable
             if ($response->getStatusCode() !== 200) {
                 return null;
             }
-
             return $this->xmlToJson($response->getBody());
         };
     }

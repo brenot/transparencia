@@ -22,145 +22,149 @@
 // Workaround for Windows 10 in hosted environment case
 // http://www.w3.org/html/wg/drafts/html/master/browsers.html#named-access-on-the-window-object
 if (window.cordova && !(window.cordova instanceof HTMLElement)) {
-    throw new Error("cordova already defined");
+    throw new Error('cordova already defined')
 }
 
-
-var channel = require('cordova/channel');
-var platform = require('cordova/platform');
-
+var channel = require('cordova/channel')
+var platform = require('cordova/platform')
 
 /**
  * Intercept calls to addEventListener + removeEventListener and handle deviceready,
  * resume, and pause events.
  */
-var m_document_addEventListener = document.addEventListener;
-var m_document_removeEventListener = document.removeEventListener;
-var m_window_addEventListener = window.addEventListener;
-var m_window_removeEventListener = window.removeEventListener;
+var m_document_addEventListener = document.addEventListener
+var m_document_removeEventListener = document.removeEventListener
+var m_window_addEventListener = window.addEventListener
+var m_window_removeEventListener = window.removeEventListener
 
 /**
  * Houses custom event handlers to intercept on document + window event listeners.
  */
 var documentEventHandlers = {},
-    windowEventHandlers = {};
+    windowEventHandlers = {}
 
-document.addEventListener = function(evt, handler, capture) {
-    var e = evt.toLowerCase();
+document.addEventListener = function (evt, handler, capture) {
+    var e = evt.toLowerCase()
     if (typeof documentEventHandlers[e] != 'undefined') {
-        documentEventHandlers[e].subscribe(handler);
+        documentEventHandlers[e].subscribe(handler)
     } else {
-        m_document_addEventListener.call(document, evt, handler, capture);
+        m_document_addEventListener.call(document, evt, handler, capture)
     }
-};
+}
 
-window.addEventListener = function(evt, handler, capture) {
-    var e = evt.toLowerCase();
+window.addEventListener = function (evt, handler, capture) {
+    var e = evt.toLowerCase()
     if (typeof windowEventHandlers[e] != 'undefined') {
-        windowEventHandlers[e].subscribe(handler);
+        windowEventHandlers[e].subscribe(handler)
     } else {
-        m_window_addEventListener.call(window, evt, handler, capture);
+        m_window_addEventListener.call(window, evt, handler, capture)
     }
-};
+}
 
-document.removeEventListener = function(evt, handler, capture) {
-    var e = evt.toLowerCase();
+document.removeEventListener = function (evt, handler, capture) {
+    var e = evt.toLowerCase()
     // If unsubscribing from an event that is handled by a plugin
-    if (typeof documentEventHandlers[e] != "undefined") {
-        documentEventHandlers[e].unsubscribe(handler);
+    if (typeof documentEventHandlers[e] != 'undefined') {
+        documentEventHandlers[e].unsubscribe(handler)
     } else {
-        m_document_removeEventListener.call(document, evt, handler, capture);
+        m_document_removeEventListener.call(document, evt, handler, capture)
     }
-};
+}
 
-window.removeEventListener = function(evt, handler, capture) {
-    var e = evt.toLowerCase();
+window.removeEventListener = function (evt, handler, capture) {
+    var e = evt.toLowerCase()
     // If unsubscribing from an event that is handled by a plugin
-    if (typeof windowEventHandlers[e] != "undefined") {
-        windowEventHandlers[e].unsubscribe(handler);
+    if (typeof windowEventHandlers[e] != 'undefined') {
+        windowEventHandlers[e].unsubscribe(handler)
     } else {
-        m_window_removeEventListener.call(window, evt, handler, capture);
+        m_window_removeEventListener.call(window, evt, handler, capture)
     }
-};
+}
 
 function createEvent(type, data) {
-    var event = document.createEvent('Events');
-    event.initEvent(type, false, false);
+    var event = document.createEvent('Events')
+    event.initEvent(type, false, false)
     if (data) {
         for (var i in data) {
             if (data.hasOwnProperty(i)) {
-                event[i] = data[i];
+                event[i] = data[i]
             }
         }
     }
-    return event;
+    return event
 }
 
-
 var cordova = {
-    define:define,
-    require:require,
-    version:PLATFORM_VERSION_BUILD_LABEL,
-    platformVersion:PLATFORM_VERSION_BUILD_LABEL,
-    platformId:platform.id,
+    define: define,
+    require: require,
+    version: PLATFORM_VERSION_BUILD_LABEL,
+    platformVersion: PLATFORM_VERSION_BUILD_LABEL,
+    platformId: platform.id,
     /**
      * Methods to add/remove your own addEventListener hijacking on document + window.
      */
-    addWindowEventHandler:function(event) {
-        return (windowEventHandlers[event] = channel.create(event));
+    addWindowEventHandler: function (event) {
+        return (windowEventHandlers[event] = channel.create(event))
     },
-    addStickyDocumentEventHandler:function(event) {
-        return (documentEventHandlers[event] = channel.createSticky(event));
+    addStickyDocumentEventHandler: function (event) {
+        return (documentEventHandlers[event] = channel.createSticky(event))
     },
-    addDocumentEventHandler:function(event) {
-        return (documentEventHandlers[event] = channel.create(event));
+    addDocumentEventHandler: function (event) {
+        return (documentEventHandlers[event] = channel.create(event))
     },
-    removeWindowEventHandler:function(event) {
-        delete windowEventHandlers[event];
+    removeWindowEventHandler: function (event) {
+        delete windowEventHandlers[event]
     },
-    removeDocumentEventHandler:function(event) {
-        delete documentEventHandlers[event];
+    removeDocumentEventHandler: function (event) {
+        delete documentEventHandlers[event]
     },
     /**
      * Retrieve original event handlers that were replaced by Cordova
      *
      * @return object
      */
-    getOriginalHandlers: function() {
-        return {'document': {'addEventListener': m_document_addEventListener, 'removeEventListener': m_document_removeEventListener},
-            'window': {'addEventListener': m_window_addEventListener, 'removeEventListener': m_window_removeEventListener}};
+    getOriginalHandlers: function () {
+        return {
+            document: {
+                addEventListener: m_document_addEventListener,
+                removeEventListener: m_document_removeEventListener,
+            },
+            window: {
+                addEventListener: m_window_addEventListener,
+                removeEventListener: m_window_removeEventListener,
+            },
+        }
     },
     /**
      * Method to fire event from native code
      * bNoDetach is required for events which cause an exception which needs to be caught in native code
      */
-    fireDocumentEvent: function(type, data, bNoDetach) {
-        var evt = createEvent(type, data);
+    fireDocumentEvent: function (type, data, bNoDetach) {
+        var evt = createEvent(type, data)
         if (typeof documentEventHandlers[type] != 'undefined') {
-            if( bNoDetach ) {
-                documentEventHandlers[type].fire(evt);
-            }
-            else {
-                setTimeout(function() {
+            if (bNoDetach) {
+                documentEventHandlers[type].fire(evt)
+            } else {
+                setTimeout(function () {
                     // Fire deviceready on listeners that were registered before cordova.js was loaded.
                     if (type == 'deviceready') {
-                        document.dispatchEvent(evt);
+                        document.dispatchEvent(evt)
                     }
-                    documentEventHandlers[type].fire(evt);
-                }, 0);
+                    documentEventHandlers[type].fire(evt)
+                }, 0)
             }
         } else {
-            document.dispatchEvent(evt);
+            document.dispatchEvent(evt)
         }
     },
-    fireWindowEvent: function(type, data) {
-        var evt = createEvent(type,data);
+    fireWindowEvent: function (type, data) {
+        var evt = createEvent(type, data)
         if (typeof windowEventHandlers[type] != 'undefined') {
-            setTimeout(function() {
-                windowEventHandlers[type].fire(evt);
-            }, 0);
+            setTimeout(function () {
+                windowEventHandlers[type].fire(evt)
+            }, 0)
         } else {
-            window.dispatchEvent(evt);
+            window.dispatchEvent(evt)
         }
     },
 
@@ -170,7 +174,7 @@ var cordova = {
     // Randomize the starting callbackId to avoid collisions after refreshing or navigating.
     // This way, it's very unlikely that any new callback would get the same callbackId as an old callback.
     callbackId: Math.floor(Math.random() * 2000000000),
-    callbacks:  {},
+    callbacks: {},
     callbackStatus: {
         NO_RESULT: 0,
         OK: 1,
@@ -181,36 +185,42 @@ var cordova = {
         IO_EXCEPTION: 6,
         INVALID_ACTION: 7,
         JSON_EXCEPTION: 8,
-        ERROR: 9
+        ERROR: 9,
     },
 
     /**
      * Called by native code when returning successful result from an action.
      */
-    callbackSuccess: function(callbackId, args) {
-        cordova.callbackFromNative(callbackId, true, args.status, [args.message], args.keepCallback);
+    callbackSuccess: function (callbackId, args) {
+        cordova.callbackFromNative(callbackId, true, args.status, [args.message], args.keepCallback)
     },
 
     /**
      * Called by native code when returning error result from an action.
      */
-    callbackError: function(callbackId, args) {
+    callbackError: function (callbackId, args) {
         // TODO: Deprecate callbackSuccess and callbackError in favour of callbackFromNative.
         // Derive success from status.
-        cordova.callbackFromNative(callbackId, false, args.status, [args.message], args.keepCallback);
+        cordova.callbackFromNative(
+            callbackId,
+            false,
+            args.status,
+            [args.message],
+            args.keepCallback,
+        )
     },
 
     /**
      * Called by native code when returning the result from an action.
      */
-    callbackFromNative: function(callbackId, isSuccess, status, args, keepCallback) {
+    callbackFromNative: function (callbackId, isSuccess, status, args, keepCallback) {
         try {
-            var callback = cordova.callbacks[callbackId];
+            var callback = cordova.callbacks[callbackId]
             if (callback) {
                 if (isSuccess && status == cordova.callbackStatus.OK) {
-                    callback.success && callback.success.apply(null, args);
+                    callback.success && callback.success.apply(null, args)
                 } else if (!isSuccess) {
-                    callback.fail && callback.fail.apply(null, args);
+                    callback.fail && callback.fail.apply(null, args)
                 }
                 /*
                  else
@@ -221,26 +231,31 @@ var cordova = {
                  */
                 // Clear callback if not expecting any more results
                 if (!keepCallback) {
-                    delete cordova.callbacks[callbackId];
+                    delete cordova.callbacks[callbackId]
                 }
             }
-        }
-        catch (err) {
-            var msg = "Error in " + (isSuccess ? "Success" : "Error") + " callbackId: " + callbackId + " : " + err;
-            console && console.log && console.log(msg);
-            cordova.fireWindowEvent("cordovacallbackerror", { 'message': msg });
-            throw err;
+        } catch (err) {
+            var msg =
+                'Error in ' +
+                (isSuccess ? 'Success' : 'Error') +
+                ' callbackId: ' +
+                callbackId +
+                ' : ' +
+                err
+            console && console.log && console.log(msg)
+            cordova.fireWindowEvent('cordovacallbackerror', { message: msg })
+            throw err
         }
     },
-    addConstructor: function(func) {
-        channel.onCordovaReady.subscribe(function() {
+    addConstructor: function (func) {
+        channel.onCordovaReady.subscribe(function () {
             try {
-                func();
-            } catch(e) {
-                console.log("Failed to run constructor: " + e);
+                func()
+            } catch (e) {
+                console.log('Failed to run constructor: ' + e)
             }
-        });
-    }
-};
+        })
+    },
+}
 
-module.exports = cordova;
+module.exports = cordova

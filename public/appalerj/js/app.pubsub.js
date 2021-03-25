@@ -1,10 +1,9 @@
 /**
- * Arquivo geral de funções para manipulação de eventos.
- * 
+ * Arquivo geral de funï¿½ï¿½es para manipulaï¿½ï¿½o de eventos.
+ *
  */
-
 
 /**
  * Faz a chama da para a pesquisa
  */
-app.bus.subscribe( "*.pesquisa",app.actions.search );
+app.bus.subscribe('*.pesquisa', app.actions.search)

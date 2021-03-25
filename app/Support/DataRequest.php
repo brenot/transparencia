@@ -49,9 +49,14 @@ class DataRequest
 
     public function getKey()
     {
-        return 'url:' . ($this->url ?: '/') . ' - ' .
-               'class:' . $this->class . ' - ' .
-               'method:' . $this->method;
+        return 'url:' .
+            ($this->url ?: '/') .
+            ' - ' .
+            'class:' .
+            $this->class .
+            ' - ' .
+            'method:' .
+            $this->method;
     }
 
     public function setCacheEnabled($enabled)

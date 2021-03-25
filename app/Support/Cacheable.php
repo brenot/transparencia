@@ -13,7 +13,7 @@ trait Cacheable
      */
     protected function fetchAndCache(DataRequest $data)
     {
-        if (! $data->cacheEnabled || ! $this->cacheEnabled) {
+        if (!$data->cacheEnabled || !$this->cacheEnabled) {
             return $this->getResult($data);
         }
 

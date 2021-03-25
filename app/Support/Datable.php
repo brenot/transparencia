@@ -8,7 +8,7 @@ trait Datable
 {
     public function convertDate($date)
     {
-        if (! $date) {
+        if (!$date) {
             return null;
         }
 

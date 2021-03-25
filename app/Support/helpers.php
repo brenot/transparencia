@@ -10,7 +10,7 @@ function array_utf8_encode($dat)
         return $dat;
     }
 
-    $ret = array();
+    $ret = [];
 
     foreach ($dat as $i => $d) {
         $ret[$i] = array_utf8_encode($d);
@@ -19,11 +19,9 @@ function array_utf8_encode($dat)
     return $ret;
 }
 
-function isApp() {
-    $isApp =
-        request()->get('client') == 'app' ||
-        session('isApp')
-    ;
+function isApp()
+{
+    $isApp = request()->get('client') == 'app' || session('isApp');
 
     if ($isApp) {
         session()->put('isApp', $isApp);

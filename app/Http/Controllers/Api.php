@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\AlerjArquivo;
-use App\AlerjConteudo;
-use App\AlerjProtocolo;
-use App\AlerjCategoria;
-use App\AlerjInformacao;
+use App\Models\AlerjArquivo;
+use App\Models\AlerjConteudo;
+use App\Models\AlerjProtocolo;
+use App\Models\AlerjCategoria;
+use App\Models\AlerjInformacao;
 use App\Support\Encodable;
 
 class Api extends Controller
@@ -20,9 +20,7 @@ class Api extends Controller
 
     public function categoria($id = null)
     {
-        return $this->find($id, AlerjCategoria::class, [
-            'informacoes.categoria'
-        ]);
+        return $this->find($id, AlerjCategoria::class, ['informacoes.categoria']);
     }
 
     private function findProtocolo($year, $number)
@@ -35,10 +33,7 @@ class Api extends Controller
 
     public function informacao($id = null)
     {
-        return $this->find($id, AlerjInformacao::class, [
-            'arquivos',
-            'categoria'
-        ]);
+        return $this->find($id, AlerjInformacao::class, ['arquivos', 'categoria']);
     }
 
     public function informacaoArquivos($id)
@@ -48,7 +43,7 @@ class Api extends Controller
                 ->with([
                     'arquivos' => function ($q) {
                         $q->exclude('blob');
-                    }
+                    },
                 ])
                 ->get()
                 ->first()->arquivos
@@ -62,25 +57,12 @@ class Api extends Controller
 
     public function conteudo($id)
     {
-        return $this->find(
-            $id,
-            AlerjConteudo::class,
-            ['arquivos'],
-            true,
-            'protocolo'
-        );
+        return $this->find($id, AlerjConteudo::class, ['arquivos'], true, 'protocolo');
     }
 
     public function conteudoArquivos($id)
     {
-        if (
-            $data = $this->find(
-                $id,
-                AlerjConteudo::class,
-                'arquivos',
-                false
-            )->first()
-        ) {
+        if ($data = $this->find($id, AlerjConteudo::class, 'arquivos', false)->first()) {
             return $this->response($data->arquivos);
         }
 
@@ -92,13 +74,8 @@ class Api extends Controller
         return $this->findProtocolo($year, $number);
     }
 
-    public function find(
-        $id,
-        $class,
-        $relations = null,
-        $returnResponse = true,
-        $keyName = null
-    ) {
+    public function find($id, $class, $relations = null, $returnResponse = true, $keyName = null)
+    {
         $object = new $class();
 
         $query = $object->newQuery();

@@ -19,6 +19,8 @@
                 </div>
             </div>
 
+
+
             @foreach($data as $item)
                 <div class="col-md-6 col-lg-4 text-center">
                     <div class="box">

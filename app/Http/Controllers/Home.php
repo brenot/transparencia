@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Cache;
-use App\Data as DataModel;
-use App\Item as ItemModel;
+use App\Models\Data as DataModel;
+use App\Models\Item as ItemModel;
 
 class Home extends Controller
 {

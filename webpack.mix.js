@@ -1,0 +1,49 @@
+const mix = require('laravel-mix')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+
+/*
+ |--------------------------------------------------------------------------
+ | Mix Asset Management
+ |--------------------------------------------------------------------------
+ |
+ | Mix provides a clean, fluent API for defining some Webpack build steps
+ | for your Laravel applications. By default, we are compiling the CSS
+ | file for the application as well as bundling up all the JS files.
+ |
+ */
+
+mix.js('resources/js/app.js', 'public/js')
+    .sass('resources/css/app.scss', 'public/css', [
+        //
+    ])
+    .vue()
+    .version()
+
+/*
+ |--------------------------------------------------------------------------
+ | Plugins
+ |--------------------------------------------------------------------------
+ */
+
+/*
+Live reload não está funcionando. Ainda não foi adicionado um patch
+https://github.com/statianzo/webpack-livereload-plugin/issues/63
+
+const LiveReloadPlugin = require('webpack-livereload-plugin')
+ */
+
+mix.webpackConfig({
+    resolve: { alias: { vue: 'vue/dist/vue.esm.js' } },
+
+    plugins: [
+        //new LiveReloadPlugin(),
+
+        new CleanWebpackPlugin({
+            cleanOnceBeforeBuildPatterns: ['js/*', '!js/item.js', '!static-files*'],
+        }),
+    ],
+
+    output: {
+        chunkFilename: 'js/chunks/[chunkhash].js',
+    },
+})

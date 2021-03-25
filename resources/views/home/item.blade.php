@@ -18,7 +18,6 @@
                 @endif
             </div>
 
-
             @if (isset($item['files']) && $item['files']->count())
                 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                     @foreach ($item['files'] as $year => $files)
