@@ -8,6 +8,7 @@
         "php": "^7.3|^8.0",
         "biscolab/laravel-recaptcha": "^5.0",
         "bugsnag/bugsnag": "^3.26",
+        "bugsnag/bugsnag-laravel": "^2.0",
         "ezyang/htmlpurifier": "^4.13",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
