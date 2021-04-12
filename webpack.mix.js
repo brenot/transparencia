@@ -13,7 +13,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
  */
 
 mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/css/app.scss', 'public/css', [
+    .sass('resources/scss/app.scss', 'public/css', [
         //
     ])
     .vue()

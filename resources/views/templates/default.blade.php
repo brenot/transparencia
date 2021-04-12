@@ -7,6 +7,7 @@
         <![endif]-->
         <meta charset="utf-8" />
         <meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0" />
+
         <link rel="stylesheet" type="text/css" href="/legislaqui/jquery-ui.css" />
         <link rel="stylesheet" type="text/css" href="/legislaqui/colorpicker.css" />
         <link rel="stylesheet" type="text/css" href="/legislaqui/datepicker.css" />
@@ -16,14 +17,25 @@
         <link rel="stylesheet" type="text/css" href="/legislaqui/jquery-ui.structure.css">
         <link rel="stylesheet" type="text/css" href="/legislaqui/estilos.css" />
 
+
         <!-- Styles -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+        {{--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">--}}
         <!-- Loading Bootstrap -->
+        {{--
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+                --}}
+
+
+        <!-- Scripts -->
+        <script src="{{ mix('js/app.js') }}" defer></script>
+        <!-- Styles -->
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
         <link rel="stylesheet" type="text/css" href="/css/custom.css" />
         <link rel="stylesheet" href="/css/styles.css">
         <link rel="stylesheet" href="/css/tabelas.css">
 
+        <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 {{--        <link href="{{mix('css/app.css')}}" rel="stylesheet">--}}
 
         @if (isApp())
@@ -31,6 +43,8 @@
         @endif
 
         <script src='https://www.google.com/recaptcha/api.js'></script>
+
+
     </head>
 
     <body>
@@ -44,9 +58,10 @@
             <div class="fundo transparencia">
                 <div class="container-full titulo-portal text-center">
                     <div class="row">
-                        <div class="col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-3">
+                        <div class="col-12">
                             <h1>Portal da Transparência</h1>
                             @yield('h2-title')
+
                         </div>
                         <div class="col-xs-2 refresh-cache pull-right" >
                             <div class="">
@@ -60,6 +75,12 @@
 
 
                 <div class="container">
+
+
+                    
+
+
+
                     @yield('content')
                 </div>
             </div>
@@ -74,7 +95,8 @@
         </script>
 
         @yield('javascript')
-
         @include('partials.google-analytics')
+
     </body>
 </html>
+

@@ -20,6 +20,30 @@
             </div>
 
 
+            <div class="card-columns categorias">
+                @foreach($data as $item)
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="tag-title">{{ $item['title'] }}</h3>
+                        <div class="icones-tranparencia">
+                            <img class="tag-icon" src="{{ $item['icon'] }}">
+                        </div>
+                    </div>
+
+                    <div class="card-body">
+                        <ul class="itens-transparencia">
+                            @foreach(collect($item['links'])->take($countLimit = config('app.items_limit_on_home')) as $link)
+                                <a href="{{ $link['link'] }}" target="{{ $link['is_external'] ? '_blank' : '_self' }}"><li class="btn">{{ $link['title'] }}</li></a>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+
+                @endforeach
+            </div>
+
+            {{--
 
             @foreach($data as $item)
                 <div class="col-md-6 col-lg-4 text-center">
@@ -41,6 +65,9 @@
                     </div>
                 </div>
             @endforeach
+
+--}}
+
         </div>
     </div>
 @stop

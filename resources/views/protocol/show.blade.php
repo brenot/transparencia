@@ -6,7 +6,7 @@
 
 @section('content')
     <div class="row">
-        <div class="col-md-offset-1 col-md-10 text-center">
+        <div class="offset-md-1 col-md-10 text-center">
 
             <div class="box-content-item">
                 <h3 class="">Protocolo {{ $protocol['protocol'] }}</h3>
@@ -88,7 +88,7 @@
         </div>
 
         <div class="row">
-            <div class="col-md-offset-5 col-md-2">
+            <div class="offset-md-5 col-md-2">
                 <a href="{{ URL::previous() }}" class="btn btn-block btn-primary voltar"> <i class="fa fa-step-backward" aria-hidden="true"></i> Voltar</a>
             </div>
         </div>

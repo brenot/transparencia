@@ -7,7 +7,7 @@
                 <h1>Portal da Transparência</h1>
             </div>
 
-            <div class="col-md-offset-2 col-md-8 text-center">
+            <div class="offset-md-2 col-md-8 text-center">
                 <div class="box">
                     <div class="box-content">
                         <h2>{{ $section['title'] }}</h2>

@@ -454,7 +454,7 @@ and (orientation: portrait) {
     .table-vencimentos {
         font-size: 11px;
     }
-    .col-md-offset-1.col-md-10.text-center {
+    .offset-md-1.col-md-10.text-center {
         /* margin-left: 0; */
         padding-left: 3px;
         padding-right: 3px;
@@ -521,7 +521,7 @@ and (min-device-width: 320px)
 and (max-device-width: 568px)
 and (-webkit-min-device-pixel-ratio: 2)
 and (orientation: portrait) {
-    .col-md-offset-1.col-md-10.text-center {
+    .offset-md-1.col-md-10.text-center {
         /* margin-left: 0; */
         padding-left: 5px;
         padding-right: 5px;
@@ -547,7 +547,7 @@ and (orientation: landscape) {
     .row.tabelas {
         margin: 0px;
     }
-    .col-md-offset-1.col-md-10.text-center {
+    .offset-md-1.col-md-10.text-center {
         padding-left: 5px;
         padding-right: 5px;
     }.row.faq {
@@ -594,7 +594,7 @@ and (min-device-width: 375px)
 and (max-device-width: 667px)
 and (-webkit-min-device-pixel-ratio: 2)
 and (orientation: portrait) {
-    .col-md-offset-1.col-md-10.text-center {
+    .offset-md-1.col-md-10.text-center {
         /* margin-left: 0; */
         padding-left: 10px !important;
         padding-right: 10px  !important;
@@ -623,7 +623,7 @@ and (max-device-width: 736px)
 and (-webkit-min-device-pixel-ratio: 3)
 and (orientation: portrait) {
 
-    .col-md-offset-1.col-md-10.text-center{
+    .offset-md-1.col-md-10.text-center{
         padding-right: 10px;
         padding-left: 10px;
     }
@@ -636,7 +636,7 @@ and (min-device-width: 414px)
 and (max-device-width: 736px)
 and (-webkit-min-device-pixel-ratio: 3)
 and (orientation: landscape) {
-    .col-md-offset-1.col-md-10.text-center {
+    .offset-md-1.col-md-10.text-center {
         /* margin-left: 0; */
         padding-left: 10px;
         padding-right: 10px;

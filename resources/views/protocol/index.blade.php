@@ -6,7 +6,7 @@
 
 @section('content')
     <div class="row">
-        <div class="col-md-offset-1 col-md-10 text-center">
+        <div class="offset-md-1 col-md-10 text-center">
 
             <div class="box-content-item">
                 <h3 class="">Acompanhe seu pedido de informação na Alerj</h3>
@@ -40,7 +40,7 @@
                             @endif
 
                             <div class="row form-botoes">
-                                <div class="col-xs-8 col-xs-offset-2 col-md-4 col-md-offset-4">
+                                <div class="col-xs-8 col-xs-offset-2 col-md-4 offset-md-4">
                                     <button id="submitButton" type="submit" class="btn btn-primary btn-block">
                                         <i class="fa fa-desktop" aria-hidden="true"></i>Pesquisar
                                     </button>
@@ -53,7 +53,7 @@
         </div>
 
         <div class="row">
-            <div class="col-md-offset-5 col-md-2">
+            <div class="offset-md-5 col-md-2">
                 <a href="{{ URL::previous() }}" class="btn btn-block btn-primary voltar"> <i class="fa fa-step-backward" aria-hidden="true"></i> Voltar</a>
             </div>
         </div>

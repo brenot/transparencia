@@ -1,0 +1,43 @@
+.card-columns {
+    @include media-breakpoint-only(lg) {
+        column-count: 3;
+    }
+    @include media-breakpoint-only(xl) {
+        column-count: 3;
+    }
+}
+
+.categorias {
+
+    .card {
+        background: #e9ead7;
+        transition: all 0.2s ease;
+        border: 3px solid #b7ba8f;
+        margin-top: 10px;
+        box-sizing: border-box;
+        border-radius: 5px 5px 0 0;
+        background-clip: padding-box;
+        padding: 5px;
+    }
+
+    .card-header {
+        padding: 0;
+    }
+
+    h3.tag-title {
+        font-size: 20px;
+        padding-top: 15px;
+    }
+
+    .icones-tranparencia {
+        margin: 6px 0 0 0  !important;
+    }
+
+    .card-body {
+        padding: 0;
+
+        .itens-transparencia{
+            height: 302px;
+        }
+    }
+}
