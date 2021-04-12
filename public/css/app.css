@@ -10002,6 +10002,10 @@ h3 {
     border-color: #dee2e6;
   }
 }
+body {
+  background: #e8eaed;
+}
+
 @media (min-width: 992px) and (max-width: 1199.98px) {
   .card-columns {
     -moz-column-count: 3;
@@ -10040,4 +10044,21 @@ h3 {
 }
 .categorias .card-body .itens-transparencia {
   height: 302px;
+}
+
+.accordion-alerj .card {
+  border: 5px solid #b7ba8f;
+  background: #b7ba8f;
+}
+.accordion-alerj .card .card-header {
+  background: #b7ba8f;
+}
+.accordion-alerj .card .card-header .btn-link {
+  font-weight: 800;
+  color: #fff;
+  text-decoration: none;
+  font-size: 24px;
+}
+.accordion-alerj .card .card-body {
+  background: #e9ead7;
 }

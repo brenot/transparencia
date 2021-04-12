@@ -1,3 +1,7 @@
+body {
+    background: #e8eaed;
+}
+
 .card-columns {
     @include media-breakpoint-only(lg) {
         column-count: 3;
@@ -40,4 +44,28 @@
             height: 302px;
         }
     }
+}
+
+
+.accordion-alerj {
+
+    .card {
+        border: 5px solid #b7ba8f;
+        background: #b7ba8f;
+        .card-header {
+            background: #b7ba8f;
+
+            .btn-link {
+                font-weight: 800;
+                color: #fff;
+                text-decoration: none;
+                font-size: 24px;
+            }
+        }
+        .card-body {
+            background: #e9ead7;
+        }
+    }
+
+
 }

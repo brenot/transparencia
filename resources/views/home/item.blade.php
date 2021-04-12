@@ -21,7 +21,7 @@
 
 
             @if (isset($item['files']) && $item['files']->count())
-                <div id="accordion" role="tablist" aria-multiselectable="true">
+                <div id="accordion" role="tablist" aria-multiselectable="true" class="accordion-alerj">
 
 
 
