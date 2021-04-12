@@ -50,11 +50,13 @@ body {
 .accordion-alerj {
 
     .card {
-        border: 5px solid #b7ba8f;
+        border: 3px solid #b7ba8f;
         background: #b7ba8f;
+        margin-bottom: 10px;
         .card-header {
             background: #b7ba8f;
             padding: 0.1rem;
+            border-bottom: 0px solid;
 
             .btn-link {
                 font-weight: 800;
