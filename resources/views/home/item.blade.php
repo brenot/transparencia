@@ -36,7 +36,7 @@
                         </div>
 
 
-                        <div id="collapse-{{ $year }}" class="collapse {{ ! isset($in) ? $in = 'in' : '' }}"  aria-labelledby="heading-{{ $year }}"  data-parent="#accordion">
+                        <div id="collapse-{{ $year }}" class="collapse {{ ! isset($in) ? $in = 'in' : '' }} {{ $loop->first ? 'show' : '' }}"  aria-labelledby="heading-{{ $year }}"  data-parent="#accordion">
                             <div class="card-body">
                                 @foreach ($files as $group)
                                     <div class="row linha-mes">
