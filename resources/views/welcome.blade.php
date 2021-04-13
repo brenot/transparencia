@@ -99,7 +99,7 @@
 </html>
 
 <div class="row faq">
-    <div class="col-xs-12">
+    <div class="col-12">
         <div class="item">
             <h4>Tem um número de protocolo?</h4>
 
@@ -117,7 +117,7 @@
 </div>
 
 <div class="row faq">
-    <div class="col-xs-12">
+    <div class="col-12">
         <div class="item">
             <h4>Pedido Presencial</h4>
             <p>Ligue grátis para o Alô Alerj no telefone 0800-0220008.</p>
@@ -126,7 +126,7 @@
 </div>
 
 <div class="row faq">
-    <div class="col-xs-12">
+    <div class="col-12">
         <div class="item">
             <h4>Pedido Eletrônico</h4>
             <p>Entre na página do Web Chat da ALERJ e fale com nossos atendentes através do <a href="https://www.aloalerj.rj.gov.br">Alô Alerj</a></p>

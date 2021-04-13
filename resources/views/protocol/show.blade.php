@@ -15,7 +15,7 @@
 
             @if (isset($protocol['autor']))
                 <div class="row faq">
-                    <div class="col-xs-12">
+                    <div class="col-12">
                         <div class="item">
                             <h3 class="text-center">{{ $protocol['numero'] }}/{{ $protocol['ano'] }}</h3>
                             <h4 class="text-center">Obrigado por nos procurar. Seu processo está em andamento.</h4>
@@ -24,7 +24,7 @@
                 </div>
             @else
                 <div class="row faq">
-                    <div class="col-xs-12">
+                    <div class="col-12">
                         <div class="item">
                             <h4>Situação atual do pedido</h4>
                             <div class="row protocol-answer-row">
