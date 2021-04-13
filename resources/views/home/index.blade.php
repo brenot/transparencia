@@ -18,11 +18,14 @@
                     <p>Informação é poder. E, na Alerj, você tem poder!</p>
                 </div>
             </div>
+        </div>
+    </div>
 
 
-            <div class="card-columns categorias">
-                @foreach($data as $item)
+    <div class="categorias row text-center">
+        @foreach($data as $item)
 
+            <div class="col-12 col-md-6 col-lg-4">
                 <div class="card">
                     <div class="card-header">
                         <h3 class="tag-title">{{ $item['title'] }}</h3>
@@ -39,37 +42,39 @@
                         </ul>
                     </div>
                 </div>
-
-                @endforeach
             </div>
 
-            {{--
+        @endforeach
+    </div>
 
-            @foreach($data as $item)
-                <div class="col-md-6 col-lg-4 text-center">
-                    <div class="box">
-                        <div class="box-content">
 
-                            <h3 class="tag-title">{{ $item['title'] }}</h3>
+    {{--
 
-                            <div class="icones-tranparencia">
-                                <img class="tag-icon" src="{{ $item['icon'] }}">
+                <div class="card-columns categorias">
+                @foreach($data as $item)
+                    <div class="col-md-6 col-lg-4 text-center">
+                        <div class="box">
+                            <div class="box-content">
+
+                                <h3 class="tag-title">{{ $item['title'] }}</h3>
+
+                                <div class="icones-tranparencia">
+                                    <img class="tag-icon" src="{{ $item['icon'] }}">
+                                </div>
+
+                                <ul class="itens-transparencia">
+                                    @foreach(collect($item['links'])->take($countLimit = config('app.items_limit_on_home')) as $link)
+                                        <a href="{{ $link['link'] }}" target="{{ $link['is_external'] ? '_blank' : '_self' }}"><li class="btn">{{ $link['title'] }}</li></a>
+                                    @endforeach
+                                </ul>
                             </div>
-
-                            <ul class="itens-transparencia">
-                                @foreach(collect($item['links'])->take($countLimit = config('app.items_limit_on_home')) as $link)
-                                    <a href="{{ $link['link'] }}" target="{{ $link['is_external'] ? '_blank' : '_self' }}"><li class="btn">{{ $link['title'] }}</li></a>
-                                @endforeach
-                            </ul>
                         </div>
                     </div>
+                @endforeach
                 </div>
-            @endforeach
+    --}}
 
---}}
 
-        </div>
-    </div>
 @stop
 
 
