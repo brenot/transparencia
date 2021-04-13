@@ -29,7 +29,7 @@
                     <div class="card">
                         <div class="card-header" id="heading-{{ $year }}">
                             <h5 class="mb-0">
-                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapse-{{ $year }}" aria-expanded="true" aria-controls="collapse-{{ $year }}">
+                                <button class="btn btn-link shadow-none" data-toggle="collapse" data-target="#collapse-{{ $year }}" aria-expanded="true" aria-controls="collapse-{{ $year }}">
                                     {{ $year }}
                                 </button>
                             </h5>
