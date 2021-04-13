@@ -116,11 +116,11 @@
                                 <div class="panel-body">
                                     @foreach ($files as $group)
                                         <div class="row linha-mes">
-                                            <div class="col-xs-5 offset-md-3 col-md-3 mes-label">
+                                            <div class="col-5 offset-md-3 col-md-3 mes-label">
                                                 {{ $group[0]['title'] }}
                                             </div>
 
-                                            <div class="col-xs-7 col-md-3 tipos-downloads">
+                                            <div class="col-7 col-md-3 tipos-downloads">
                                                 @foreach($group as $file)
                                                     <a href="{{ $file['url'] }}" download>
                                                         <i class="btn fa fa-file-{{ $file['file_type'] }}-o" aria-hidden="true">
@@ -149,7 +149,7 @@
 
 
         <div class="row">
-            <div class="col-xs-offset-3 col-xs-6 offset-md-5 col-md-2">
+            <div class="col-offset-3 col-6 offset-md-5 col-md-2">
                 <a href="{{ URL::previous() }}" class="btn btn-block btn-primary voltar"> <i class="fa fa-step-backward" aria-hidden="true"></i> Voltar</a>
             </div>
         </div>

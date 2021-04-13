@@ -7,8 +7,11 @@ li.pai {
     margin-top:-2px !important;
 }
 
-.redes_sociais .logotipo_redes {
+.redes_sociais {
     height: 30px;
+    .logotipo_redes {
+        height: 30px;
+    }
 }
 
 .card-columns {

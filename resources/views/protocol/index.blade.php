@@ -14,7 +14,7 @@
 
 
             <div class="row faq">
-                <div class="col-xs-12">
+                <div class="col-12">
                     <div class="item protocolo">
                         <h4>Digite o número do procotolo</h4>
 
@@ -22,7 +22,7 @@
                             <input name="_token" type="hidden" value="{{ csrf_token() }}">
 
                             <div class="row">
-                                <div class="col-xs-12">
+                                <div class="col-12">
                                     <div style="padding-top: 20px">
                                         <textarea name="protocol" rows="1" class="js-obrigatorio" id="campoMensagem" style="font-size: 2em;" placeholder="Número / Ano">{{ old('protocol') }}</textarea>
                                     </div>
@@ -40,7 +40,7 @@
                             @endif
 
                             <div class="row form-botoes">
-                                <div class="col-xs-8 col-xs-offset-2 col-md-4 offset-md-4">
+                                <div class="col-8 col-offset-2 col-md-4 offset-md-4">
                                     <button id="submitButton" type="submit" class="btn btn-primary btn-block">
                                         <i class="fa fa-desktop" aria-hidden="true"></i>Pesquisar
                                     </button>

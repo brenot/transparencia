@@ -63,7 +63,7 @@
                             @yield('h2-title')
 
                         </div>
-                        <div class="col-xs-2 refresh-cache pull-right" >
+                        <div class="col-2 refresh-cache pull-right" >
                             <div class="">
                                 <a href="{{ route('cache.clear') }}">
                                     <i class="fa fa-refresh"></i>
