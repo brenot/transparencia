@@ -7,6 +7,10 @@ li.pai {
     margin-top:-2px !important;
 }
 
+.redes_sociais .logotipo_redes {
+    height: 30px;
+}
+
 .card-columns {
     @include media-breakpoint-only(lg) {
         column-count: 3;
