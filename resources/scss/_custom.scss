@@ -3,6 +3,19 @@ body {
 }
 
 
+.refresh-cache.pull-right {
+    padding-top: 30px;
+
+    i {
+        color: #1d2d52;
+        font-size: 40px;
+        &:hover {
+            color: #535E7F;
+        }
+    }
+}
+
+
 li.pai {
     margin-top:-2px !important;
 }
@@ -80,6 +93,5 @@ li.pai {
             background: #e9ead7;
         }
     }
-
-
 }
+

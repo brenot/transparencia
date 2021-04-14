@@ -8566,7 +8566,7 @@ input[type=number]::-webkit-inner-spin-button {
 
             .superior .conteudo .logotipo {
                 width: 210px;
-                height: 61px;
+                height: 80px;
                 float: left;
                 overflow: hidden;
                 margin: 0px 0px 0px 0px;
@@ -12290,7 +12290,7 @@ input[type=number]::-webkit-inner-spin-button {
     }
 
         .superior .conteudo .coluna .redes_sociais {
-            top: 0px;
+            top: 55px;
             right: 70px;
             left: auto;
         }

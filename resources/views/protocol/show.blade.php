@@ -87,10 +87,12 @@
             @endif
         </div>
 
-        <div class="row">
-            <div class="offset-md-5 col-md-2">
-                <a href="{{ URL::previous() }}" class="btn btn-block btn-primary voltar"> <i class="fa fa-step-backward" aria-hidden="true"></i> Voltar</a>
-            </div>
+    </div>
+
+    <div class="row">
+        <div class="col-offset-3 col-6 offset-md-5 col-md-2">
+            <a href="{{ URL::previous() }}" class="btn btn-block btn-primary voltar"> <i class="fa fa-step-backward" aria-hidden="true"></i> Voltar</a>
         </div>
     </div>
+
 @stop
