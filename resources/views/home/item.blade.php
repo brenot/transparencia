@@ -40,11 +40,11 @@
                                 <div class="card-body">
                                     @foreach ($files as $group)
                                         <div class="row linha-mes">
-                                            <div class="col-5 offset-md-3 col-md-3 mes-label">
+                                            <div class="col-6 offset-md-1 col-md-5 mes-label">
                                                 {{ $group[0]['title'] }}
                                             </div>
 
-                                            <div class="col-7 col-md-3 tipos-downloads">
+                                            <div class="col-6 col-md-5 tipos-downloads">
                                                 @foreach($group as $file)
                                                     <a href="{{ $file['url'] }}" download>
                                                         <i class="btn fas fa-file-{{ $file['file_type'] }}" aria-hidden="true">
