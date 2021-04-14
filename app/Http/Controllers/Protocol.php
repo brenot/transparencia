@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProtocolSearchRequest;
 use Throwable;
 use Exception;
 use App\Support\Encodable;
@@ -60,7 +61,7 @@ class Protocol extends Controller
         return [$protocol, ''];
     }
 
-    public function show(Request $request, ProtocolModel $protocol)
+    public function show(ProtocolSearchRequest $request, ProtocolModel $protocol)
     {
         list($number, $message) = $this->sanitizeProtocolNumber($request);
 
