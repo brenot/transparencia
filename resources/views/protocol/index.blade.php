@@ -35,9 +35,8 @@
                                 @endforeach
                             @endif
 
-                            @if (app()->environment('production'))
-                                <div class="g-recaptcha" data-sitekey="{{config('app.recaptcha')}}" data-callback="enableBtn"></div>
-                            @endif
+
+                            @include('partials.recaptcha-v2-form')
 
                             <div class="row form-botoes">
                                 <div class="col-8 col-offset-2 col-md-4 offset-md-4">
