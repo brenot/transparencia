@@ -103,6 +103,7 @@ return [
             'prefix' => '',
             'schema' => 'public',
             'sslmode' => 'prefer',
+            'version' => env('DB_ALERJ_VERSION', '8.0'),
         ],
 
         'sqlsrv' => [
