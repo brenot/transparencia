@@ -36,7 +36,7 @@
                             @endif
 
                             @if (app()->environment('production'))
-                                <div class="g-recaptcha" data-sitekey="6LfiAiEUAAAAADcMGXqc13vAJ53XkOwslJseW3Le" data-callback="enableBtn"></div>
+                                <div class="g-recaptcha" data-sitekey="{{config('app.recaptcha')}}" data-callback="enableBtn"></div>
                             @endif
 
                             <div class="row form-botoes">
