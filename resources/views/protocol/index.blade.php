@@ -39,7 +39,7 @@
                             @include('partials.recaptcha-v2-form')
 
                             <div class="row form-botoes">
-                                <div class="col-8 col-offset-2 col-md-4 offset-md-4">
+                                <div class="col-8 offset-2 col-md-4 offset-md-4">
                                     <button id="submitButton" type="submit" class="btn btn-primary btn-block">
                                         <i class="fa fa-desktop" aria-hidden="true"></i>Pesquisar
                                     </button>
@@ -54,7 +54,7 @@
     </div>
 
     <div class="row">
-        <div class="col-offset-3 col-6 offset-md-5 col-md-2">
+        <div class="offset-3 col-6 offset-md-5 col-md-2">
             <a href="{{ URL::previous() }}" class="btn btn-block btn-primary voltar"> <i class="fa fa-step-backward" aria-hidden="true"></i> Voltar</a>
         </div>
     </div>
