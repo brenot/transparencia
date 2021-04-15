@@ -528,9 +528,15 @@ td.blue_link {
 /*text-transform: uppercase;*/
 /*}*/
 
+
+
+
+
+/*
+
 .btn-primary, .btn-info, .btn-danger, .btn-primary:hover, .btn-info:hover, .btn-danger:hover, .btn-primary:active, .btn-info:active, .btn-danger:active, .btn-primary:focus, .btn-info:focus, .btn-danger:focus, .btn-primary:active:focus, .btn-info:active:focus, .btn-danger:active:focus  {
-    /* width: auto; */
-    /* height: auto; */
+    !* width: auto; *!
+    !* height: auto; *!
     font-family: 'univers_47';
     font-size: 11px;
     text-transform: uppercase;
@@ -541,7 +547,7 @@ td.blue_link {
     padding: 6px 10px 3px 10px;
     background: #ff6600 !important;
     text-decoration: none;
-    /*border-color: transparent !important;*/
+    !*border-color: transparent !important;*!
     line-height: 2.6em;
     border: 1px #212e52 solid;
 }
@@ -553,9 +559,15 @@ td.blue_link {
 .btn-link {
     text-decoration: none;
     color: #ff6600;
-    /* margin: 0px 0px 0px 0px; */
-    /* padding: 0px 0px 0px 0px; */
+    !* margin: 0px 0px 0px 0px; *!
+    !* padding: 0px 0px 0px 0px; *!
 }
+
+*/
+
+
+
+
 
 /* Table */
 .table-responsive {

@@ -22,6 +22,16 @@
     </div>
 
 
+    <div class="row">
+        <div class="col-12">
+            <a href="http://www2.alerj.rj.gov.br/leideacesso/formulario-2016.asp" class="btn btn-primary btn-lg btn-block">
+                <i class="fas fa-desktop" aria-hidden="true"></i>Formulário online
+            </a>
+        </div>
+    </div>
+
+
+
     <div class="categorias row text-center">
         @foreach($data as $item)
 

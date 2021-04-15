@@ -628,9 +628,11 @@ p.form-intro {
     margin-top: 40px;
 }
 
+/*
 .row.form-botoes {
     margin: 30px 0 50px;
 }
+*/
 
 .form-botoes i.fa {
     font-size: 24px;
@@ -650,6 +652,9 @@ p.form-intro {
 .form-botoes .btn-primary:hover {
     background: #334263 !important;
 }
+
+
+
 
 
 
@@ -949,7 +954,7 @@ and (min-device-width: 414px)
 and (max-device-width: 736px)
 and (-webkit-min-device-pixel-ratio: 3)
 and (orientation: landscape) {
-    .col-xs-12{
+    .col-12{
         padding-right: 0px;
         padding-left: 0px;
     }
@@ -1096,7 +1101,7 @@ and (orientation: landscape) {
     h3 {
         font-size: 22px;
     }
-    .col-xs-12{
+    .col-12{
         padding-right: 0px;
         padding-left: 0px;
     }

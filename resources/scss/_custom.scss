@@ -95,3 +95,16 @@ li.pai {
     }
 }
 
+
+.btn-secondary {
+    color: #fff;
+    background-color: #1d2d52 !important;
+    border-color: #1d2d52 !important;
+    text-transform: uppercase;
+
+    &:hover {
+        background: #334263 !important;
+    }
+
+}
+
