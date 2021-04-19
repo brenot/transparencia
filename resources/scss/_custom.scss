@@ -27,6 +27,24 @@ li.pai {
     }
 }
 
+
+
+
+@media only screen and (max-width: 496px) {
+    .titulo-portal {
+        h1 {
+            font-size: 1.7rem;
+        }
+
+    }
+
+    .refresh-cache.pull-right i {
+        color: #1d2d52;
+        font-size: 20px;
+    }
+
+}
+
 .categorias {
     .card {
         margin-bottom: 20px;
