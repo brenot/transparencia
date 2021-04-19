@@ -2,6 +2,9 @@ body {
     background: #e8eaed;
 }
 
+.novo-header {
+    background: url("/legislaqui/imagens/base_superior.jpg") repeat-x;
+}
 
 .refresh-cache.pull-right {
     padding-top: 30px;
@@ -24,6 +27,10 @@ li.pai {
     height: 30px;
     .logotipo_redes {
         height: 30px;
+        margin-right: 10px;
+        &:last-of-type{
+            margin-right: 0;
+        }
     }
 }
 
